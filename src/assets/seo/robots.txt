@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /develop.html
+Allow: /
+Sitemap: http://zelsmoke.ru/sitemap.xml

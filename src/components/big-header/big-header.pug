@@ -1,0 +1,15 @@
+mixin big-header(subtitle)
+    header.big-header.fullpage
+        h1.big-header__title Кальян на дом
+        h2.big-header__subtitle
+            | Доставляем удовольствие
+            br
+            | #{subtitle}
+        include ../button/button
+        +button('Заказать', 'button', 'header')
+        svg.big-header__arrow(width='40px', height='22px', viewBox='0 0 40 22', version='1.1', xmlns='http://www.w3.org/2000/svg')
+            g#screens(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd')
+                g#Screen-1920(transform='translate(-940.000000, -954.000000)', fill='#545B6B')
+                    g#first-screen(transform='translate(40.000000, 0.000000)')
+                        g#icon-down(transform='translate(900.000000, 954.000000)')
+                            path#Path(d='M39.4188034,0.547008547 C38.8717949,-2.77555756e-17 37.982906,-2.77555756e-17 37.4358974,0.547008547 L20,18.017094 L2.52991453,0.547008547 C1.98290598,-2.77555756e-17 1.09401709,-2.77555756e-17 0.547008547,0.547008547 C-6.10622664e-16,1.09401709 -6.10622664e-16,1.98290598 0.547008547,2.52991453 L18.974359,20.957265 C19.2478632,21.2307692 19.5897436,21.3675214 19.965812,21.3675214 C20.3076923,21.3675214 20.6837607,21.2307692 20.957265,20.957265 L39.3846154,2.52991453 C39.965812,1.98290598 39.965812,1.09401709 39.4188034,0.547008547 Z')

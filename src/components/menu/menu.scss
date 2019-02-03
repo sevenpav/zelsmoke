@@ -1,0 +1,113 @@
+.menu {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
+
+  @include mq-less-768 {
+    align-items: center;
+    padding-top: 24px;
+  }
+
+  &--collapse {
+    max-width: none;
+    height: calc(100vh - 24px);
+    background-color: #232A3C;
+    justify-content: center;
+    text-align: center;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -20;
+      background-image: url('../../assets/img/noise.gif');
+      opacity: .02;
+      width: 100%;
+      height: 100%;
+    }
+
+    .menu__list {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 100%;
+      margin-right: 0;
+    }
+
+    .menu__item {
+
+      &:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 32px;
+      }
+    }
+
+    .menu__link {
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+    }
+
+    .menu__feedback-link {
+      display: flex;
+    }
+  }
+}
+
+.menu__top {
+  align-self: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 40px;
+
+  @include mq-less-768 {
+    flex-basis: 100%;
+  }
+}
+
+.menu__list {
+  margin-right: 40px;
+
+  @include mq-less-768 {
+    display: none;
+  }
+}
+
+.menu__item {
+  display: inline-block;
+
+  &:not(:last-child) {
+    margin-right: 32px;
+  }
+}
+
+.menu__link {
+  font-size: 20px;
+  transition: all 200ms;
+
+  &:hover {
+    color: fade_out($main-text-color, .2);
+  }
+}
+
+.menu__feedback-link {
+  display: none;
+  font-size: 14px;
+  color: $primary-text-color;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  flex-basis: 100%;
+  align-self: flex-end;
+  padding: 32px 0;
+  border-top: 1px solid #545B6B;
+  justify-content: center;
+}
+
+// Mixes

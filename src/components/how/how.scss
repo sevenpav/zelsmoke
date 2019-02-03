@@ -1,0 +1,229 @@
+.how {
+  @include centered-width;
+  margin-bottom: 80px;
+  border-bottom: 1px solid #545B6B;
+  background: url('hookah.svg') no-repeat bottom center;
+
+  @include mq-less-1360 {
+    background-size: 768px 768px;
+  }
+
+  @include mq-less-1024 {
+    background-size: 560px 560px;
+  }
+
+  @include mq-less-768 {
+    background-size: 240px 240px;
+    margin-bottom: 64px;
+  }
+}
+
+.how__title {
+  font-size: 48px;
+  color: $main-text-color;
+  letter-spacing: 3.6px;
+  margin: 0 0 40px;
+
+  @include mq-less-768 {
+    font-size: 24px;
+    letter-spacing: 2.6px;
+    margin-bottom: 32px;
+  }
+}
+
+.how__steps {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+
+  @include mq-less-768 {
+    margin-bottom: 64px;
+  }
+}
+
+.how__step {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &:not(:last-child) {
+    margin-bottom: 32px;
+
+    @include mq-less-1024 {
+      margin-bottom: 64px;
+    }
+
+    @include mq-less-768 {
+      margin-bottom: 16px;
+    }
+  }
+
+
+  &:nth-child(odd) {
+
+    .how__num {
+      width: 151px;
+
+      @include mq-less-1360 {
+        width: 114px;
+      }
+
+      @include mq-less-1024 {
+        width: 0;
+      }
+    }
+
+    .how__step-content {
+      width: 409px;
+      margin-left: 32px;
+
+      @include mq-less-1360 {
+        width: 310px;
+        margin-left: 24px;
+      }
+
+      @include mq-less-1024 {
+        width: 320px;
+        margin-left: 0;
+      }
+
+      @include mq-less-768 {
+        order: 2;
+        width: 272px;
+
+      }
+    }
+
+    .how__step-arrow {
+      margin-left: auto;
+      margin-right: 278px;
+      transform: scale(-1, 1);
+
+      @include mq-less-1360 {
+        margin-right: 230px;
+      }
+
+      @include mq-less-1024 {
+        margin-right: 80px;
+      }
+
+      @include mq-less-768 {
+        order: 1;
+        transform: scale(-1, 1) rotate(38deg);
+        margin-right: 0;
+      }
+    }
+  }
+
+  &:nth-child(even) {
+
+    .how__num {
+      width: 166px;
+      text-align: right;
+
+      @include mq-less-1360 {
+        width: 126px;
+      }
+
+      @include mq-less-1024 {
+        width: 0;
+      }
+    }
+
+    .how__step-content {
+      width: 394px;
+      text-align: right;
+      margin-right: 32px;
+
+      @include mq-less-1360 {
+        width: 298px;
+        margin-right: 24px;
+      }
+
+      @include mq-less-1024 {
+        width: 320px;
+        margin-right: 0;
+      }
+
+      @include mq-less-768 {
+        width: 272px;
+      }
+    }
+
+    .how__step-arrow {
+      margin-right: auto;
+      margin-left: 263px;
+
+      @include mq-less-1360 {
+        margin-left: 218px;
+      }
+
+      @include mq-less-1024 {
+        margin-left: 80px;
+      }
+
+      @include mq-less-768 {
+        transform: rotate(38deg);
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.how__step-arrow {
+  align-self: flex-start;
+  margin-top: 8px;
+
+  @include mq-less-1024 {
+    margin-top: -24px;
+  }
+
+  @include mq-less-768 {
+    width: 80px;
+  }
+
+  @include mq-less-768 {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+}
+
+.how__num {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  color: rgba(255, 255, 255, .06);
+  font-size: 160px;
+  font-weight: 900;
+  letter-spacing: 2.6px;
+  line-height: 1;
+
+  @include mq-less-1360 {
+    font-size: 120px;
+  }
+
+  @include mq-less-1024 {
+    display: none;
+  }
+}
+
+.how__step-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: $primary-text-color;
+  margin: 0 0 16px;
+
+  @include mq-less-768 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+}
+
+.how__step-text {
+  font-size: 18px;
+  color: $main-text-color;
+  margin: 0;
+
+  @include mq-less-768 {
+    font-size: 16px;
+  }
+}

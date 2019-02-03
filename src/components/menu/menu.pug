@@ -1,0 +1,13 @@
+mixin menu(items)
+    .menu
+        .menu__top
+            include ../logo/logo
+            +logo('menu')
+            button.hamburger.menu__hamburger(type='button')
+                span.hamburger-box
+                    span.hamburger-inner
+        ul.menu__list
+            each item in items
+                li.menu__item
+                    a.menu__link(href=`${item.link}` target=((item.blank) ? `_blank` : ''))= item.title
+        a.menu__feedback-link(href='mailto:hello@zelsmoke.ru') Связаться с нами

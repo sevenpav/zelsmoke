@@ -1,0 +1,40 @@
+@mixin mq-less-1920 {
+  @media (max-width: 1919.98px){
+    @content
+  }
+}
+
+@mixin mq-less-1360 {
+  @media (max-width: 1359.98px){
+    @content
+  }
+}
+
+@mixin mq-less-1024 {
+  @media (max-width: 1023.98px){
+    @content
+  }
+}
+
+@mixin mq-less-768 {
+  @media (max-width: 767.98px){
+    @content
+  }
+}
+
+@mixin centered-width {
+  max-width: 1216px;
+  margin: 0 auto;
+
+  @include mq-less-1360 {
+    max-width: 928px;
+  }
+
+  @include mq-less-1024 {
+    max-width: 672px;
+  }
+
+  @include mq-less-768 {
+    max-width: 272px;
+  }
+}

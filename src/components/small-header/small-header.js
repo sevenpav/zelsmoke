@@ -1,0 +1,1 @@
+import './small-header.scss';

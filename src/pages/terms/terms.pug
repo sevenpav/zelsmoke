@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+        include ../../components/menu/menu
+        -
+                var links = [
+                        {
+                                link: '/',
+                                title: 'Главная'
+                        },
+                        {
+                                link: '/develop.html',
+                                title: 'Кейтеринг'
+                        },{
+                                link: 'https://instagram.com/zelsmoke',
+                                title: 'Instagram',
+                                blank: true
+                        }
+                ]
+        +menu(links)
+        include ../../components/small-header/small-header
+        +small-header('Условия аренды')
+        include ../../components/terms/terms
+        +terms
+        include ../../components/footer/footer
