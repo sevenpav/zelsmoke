@@ -21,7 +21,11 @@ const instances = pages.map(page => {
 	})
 });
 
-const entries = pages.reduce((acc, page) => acc[page] = `./pages/${page}/${page}.js`, { main: './main.js' });
+const entries = pages.reduce((acc, page) => {
+	acc[page] = `./pages/${page}/${page}.js`;
+
+	return acc;
+}, { main: './main.js' });
 
 const optimization = {
 	minimizer: [
