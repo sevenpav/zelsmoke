@@ -22,7 +22,7 @@
   }
 }
 
-@mixin centered-width {
+@mixin centered-width($fluid: false) {
   max-width: 1216px;
   margin: 0 auto;
 
@@ -35,6 +35,11 @@
   }
 
   @include mq-less-768 {
-    max-width: 272px;
+    @if $fluid {
+      max-width: none;
+      width: 90%;
+    } @else {
+      max-width: 272px;
+    }
   }
 }

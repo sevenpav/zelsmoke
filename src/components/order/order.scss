@@ -4,11 +4,11 @@
 }
 
 .order__title {
-  font-size: 48px;
+  margin: 0 0 16px;
   color: $main-text-color;
+  font-size: 48px;
   letter-spacing: 3.6px;
   text-align: center;
-  margin: 0 0 16px;
 
   @include mq-less-768 {
     font-size: 32px;
@@ -16,10 +16,10 @@
 }
 
 .order__subtitle {
-  font-size: 24px;
-  color: $secondary-text-color;
-  text-align: center;
   margin: 0 0 40px;
+  color: $secondary-text-color;
+  font-size: 24px;
+  text-align: center;
 
   @include mq-less-768 {
     font-size: 20px;
@@ -31,9 +31,9 @@
 }
 
 .order__extra-choice-wrap {
+  margin-bottom: 32px;
   padding-top: 32px;
   border-top: 1px solid #33394A;
-  margin-bottom: 32px;
 }
 
 .order__choice {
@@ -57,14 +57,14 @@
 }
 
 .order__btn-close {
-  width: 40px;
-  height: 40px;
-  border: 2px solid #B4594D;
-  border-radius: 4px;
-  background: none;
   position: absolute;
   top: 50%;
   left: -40px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 2px solid #B4594D;
+  border-radius: 4px;
   transform: translate(-100%, -50%);
   cursor: pointer;
 
@@ -85,17 +85,16 @@
 
   &:before, &:after {
     content: '';
-    height: 28px;
-    width: 2px;
-    background-color: #B4594D;
     position: absolute;
-    border-radius: 4px;
     top: 50%;
     left: 50%;
+    width: 2px;
+    height: 28px;
     margin-top: calc(-28px / 2);
     margin-left: calc(-2px / 2);
+    background-color: #B4594D;
+    border-radius: 4px;
     transition: all 200ms;
-
   }
 
   &:before {
@@ -109,7 +108,6 @@
 
 .order__item {
   cursor: pointer;
-  transition: all 200ms;
 
   &:not(:last-child) {
     margin-right: 72px;
@@ -132,27 +130,26 @@
 }
 
 .order__sticker {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 8px;
-  transition: background-color 200ms ease-out;
   width: 128px;
   height: 128px;
-  border-radius: 50%;
-  position: relative;
+  margin-bottom: 8px;
   background-color: #33394A;
+  border-radius: 50%;
 
   &:after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url('../../assets/img/noise.gif');
-    opacity: .02;
     width: 100%;
     height: 100%;
+    background-image: url('../../assets/img/noise.gif');
     border-radius: 50%;
+    opacity: .02;
   }
 }
 
@@ -161,8 +158,8 @@
 }
 
 .order__item-name, .order__item-price {
-  font-size: 20px;
   color: $main-text-color;
+  font-size: 20px;
 }
 
 .order__item-name {
@@ -174,18 +171,17 @@
 }
 
 .order__btn-add {
+  display: block;
+  margin: 24px auto 0;
+  padding: 16px 32px;
+  color: $main-text-color;
+  font-size: 20px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
   background: none;
   border: 2px solid #33394A;
   border-radius: 4px;
-  font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1.6px;
-  color: $main-text-color;
-  padding: 16px 32px;
   cursor: pointer;
-  display: block;
-  margin: 24px auto 0;
-  transition: all 200ms;
 
   &--hide {
     display: none;
@@ -197,10 +193,10 @@
 }
 
 .order__price, .order__total {
-  font-size: 32px;
   display: flex;
   justify-content: center;
   margin-top: 40px;
+  font-size: 32px;
 
   &--hide {
     display: none;
@@ -208,13 +204,13 @@
 }
 
 .order__price-label, .order__total-label {
-  color: $main-text-color;
   margin: 0 16px 0 0;
+  color: $main-text-color;
 }
 
 .order__price-sum, .order__total-sum {
-  color: $primary-text-color;
   margin: 0;
+  color: $primary-text-color;
 }
 
 // Mixes

@@ -1,0 +1,45 @@
+.header {
+  @include centered-width;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  height: 100vh;
+  border-bottom: 1px solid #545b6b;
+}
+
+.header__title {
+  margin: 0 0 16px;
+  color: $main-text-color;
+  font-size: 80px;
+  letter-spacing: 6px;
+  text-align: center;
+
+  @include mq-less-1024 {
+    letter-spacing: 4.6px;
+  }
+
+  @include mq-less-768 {
+    font-size: 30px;
+    letter-spacing: 2.6px;
+  }
+}
+
+.header__subtitle {
+  margin: 0 0 48px;
+  color: $secondary-text-color;
+  font-weight: 500;
+  font-size: 32px;
+  text-align: center;
+
+  @include mq-less-768 {
+    font-size: 18px;
+  }
+}
+
+.header__arrow {
+  position: absolute;
+  bottom: 48px;
+}

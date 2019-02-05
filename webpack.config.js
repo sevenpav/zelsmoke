@@ -1,11 +1,11 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 const { getDirBasenames } = require('./utils.js');
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -21,11 +21,20 @@ const instances = pages.map(page => {
 	})
 });
 
-const entries = pages.reduce((acc, page) => {
-	acc[page] = `./pages/${page}/${page}.js`;
+const entries = pages.reduce((acc, page) => acc[page] = `./pages/${page}/${page}.js`, { main: './main.js' });
 
-	return acc;
-}, { main: './main.js' });
+const optimization = {
+	minimizer: [
+		new UglifyJsPlugin({
+			uglifyOptions: {
+				output: {
+					comments: false
+				}
+			}
+		}),
+		new OptimizeCSSAssetsPlugin({})
+	]
+};
 
 const config = {
 	context: path.resolve(__dirname, 'src'),
@@ -41,18 +50,7 @@ const config = {
 		clientLogLevel: 'none',
 		compress: true
 	},
-	optimization: {
-		minimizer: [
-			new UglifyJsPlugin({
-				uglifyOptions: {
-					output: {
-						comments: false
-					}
-				}
-			}),
-			new OptimizeCSSAssetsPlugin({})
-		]
-	},
+	optimization: isDev ? {} : optimization,
 	module: {
 		rules: [
 			{
@@ -118,8 +116,7 @@ const config = {
 				use: {
 					loader: 'html-loader',
 					options: {
-						attrs: [':src', ':href'],
-						minimize: true
+						attrs: [':src', ':href']
 					}
 				}
 			},
@@ -127,7 +124,7 @@ const config = {
 				test: /\.pug$/,
 				loader: 'pug-loader',
 				options: {
-					// pretty: true
+					pretty: isDev
 				}
 			}
 		]
@@ -148,11 +145,7 @@ const config = {
 			to: './img'
 		}]),
 		!isDev && new CopyWebpackPlugin([{
-			from: './assets/seo/robots.txt',
-			to: './'
-		}]),
-		!isDev && new CopyWebpackPlugin([{
-			from: './assets/seo/sitemap.xml',
+			from: './assets/seo/**',
 			to: './'
 		}])
 	].filter(Boolean)

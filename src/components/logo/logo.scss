@@ -1,7 +1,9 @@
 .logo {
 
-  @include mq-less-768 {
-    width: 140px;
-    height: auto;
+  svg {
+    @include mq-less-768 {
+      width: 140px;
+      height: auto;
+    }
   }
 }

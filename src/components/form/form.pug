@@ -10,8 +10,8 @@ mixin form(mixes)
         .form__field-button
             include ../button/button
             +button('Заказать', 'submit', 'form')
-            span.form__button-agree
+            span.form__agree-text
                 | Нажимая на кнопку вы подтверждаете, что
                 |
-                a.form__button-agree-link(href='/terms.html', target='_blank')
+                span.form__agree-btn
                     | согласны с условиями договора аренды

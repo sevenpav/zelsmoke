@@ -1,0 +1,10 @@
+mixin header(subtitle)
+    header.header.fullpage
+        h1.header__title Кальян на дом
+        h2.header__subtitle
+            | Доставляем удовольствие
+            br
+            | #{subtitle}
+        include ../button/button
+        +button('Заказать', 'button', 'header')
+        include header__arrow.svg

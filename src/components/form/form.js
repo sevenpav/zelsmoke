@@ -2,21 +2,29 @@ import './form.scss';
 import '../button/button';
 
 import IMask from 'imask';
-import { total, getTotalSum } from '../order/js/total-utils';
+import { total } from '../order/js/total-utils';
 
 const form = document.querySelector('.form');
+const btnAgreeNode = form.querySelector('.form__agree-btn');
 const successBlock = document.querySelector('.success');
 const successBtnClose = successBlock.querySelector('.success__btn-close');
 
 const name = document.getElementById('name');
 const phone = document.getElementById('phone');
 
-const phoneMask = new IMask(
-	phone, {
-		mask: '+{7} (000) 000-00-00'
-	});
+btnAgreeNode.addEventListener('click', () => {
+	const bodyNode = document.body;
+	const termsNode = document.querySelector('.terms');
+
+	document.documentElement.classList.add('overflow-fix');
+	bodyNode.classList.add('darken');
+	termsNode.classList.add('terms--show');
+})
+
+const phoneMask = new IMask(phone, { mask: '+{7} (000) 000-00-00' });
 
 successBtnClose.addEventListener('click', () => {
+	document.documentElement.classList.remove('overflow-fix');
 	successBlock.classList.remove('success--show');
 	document.body.classList.remove('darken');
 	document.body.classList.remove('fixed');
@@ -26,7 +34,7 @@ form.onsubmit = e => {
 	e.preventDefault();
 	let isError = false;
 
-	const inputs = document.querySelectorAll('.form__input');
+	const inputs = form.querySelectorAll('.form__input');
 
 	const addError = el => {
 		el.parentElement.classList.add('form__field--error');
@@ -56,20 +64,27 @@ form.onsubmit = e => {
 
 	const btn = document.querySelector('.form__button');
 	const spinner = document.querySelector('.button__spinner');
+
 	btn.classList.add('form__button--loading');
 	spinner.classList.add('button__spinner--active');
 
 	const bowlsStr = total.bowls.reduce((acc, bowl, i) => {
 		if (i === 0) {
-			return acc += `<br>${i + 1}. Чаша: ${bowl.name}, Наполнитель: ${total.filler.name}, Цена: ${bowl.price + total.filler.price} руб.<br>`;
+			return acc += `
+				<br>${i + 1}. 
+				Чаша: ${bowl.name}, 
+				Наполнитель: ${total.filler.name}, 
+				Цена: ${bowl.price + total.filler.price} руб.
+				<br>`;
 		}
 		if (i === total.bowls.length - 1) {
 			return acc += `${i + 1}. Чаша: ${bowl.name}, Цена: ${bowl.price} руб.`;
 		}
 		return acc += `${i + 1}. Чаша: ${bowl.name}, Цена: ${bowl.price} руб.<br>`;
-	}, '');
+	}, '')
 
 	const data = new FormData();
+
 	data.append('name', name.value);
 	data.append('phone', phone.value);
 	data.append('bowls', bowlsStr);
@@ -84,19 +99,19 @@ form.onsubmit = e => {
 		.then((res) => {
 			inputs.forEach(el => {
 				el.value = '';
-			});
+			})
 			btn.classList.remove('form__button--loading');
 			spinner.classList.remove('button__spinner--active');
 
 			if (res.ok) {
+				document.documentElement.classList.add('overflow-fix');
 				successBlock.classList.add('success--show');
 				document.body.classList.add('darken');
 			} else {
-				throw new Error('Ошибка отправки данных')
+				throw new Error('Ошибка отправки данных');
 			}
-
 		})
 		.catch((e) => {
 			console.log(e.message);
-		})
+		});
 };

@@ -1,7 +1,7 @@
 .faq {
   @include centered-width;
-  border-bottom: 1px solid #545B6B;
   margin-bottom: 80px;
+  border-bottom: 1px solid #545B6B;
 
   @include mq-less-768 {
     margin-bottom: 64px;
@@ -10,9 +10,9 @@
 
 .faq__title {
   margin: 0 0 40px;
+  color: $main-text-color;
   font-size: 48px;
   letter-spacing: 3.6px;
-  color: $main-text-color;
   text-align: center;
 
   @include mq-less-768 {
@@ -31,8 +31,8 @@
 }
 
 .faq__item {
-  border-bottom: 1px solid #33394A;
   padding: 24px 0;
+  border-bottom: 1px solid #33394A;
 
   @include mq-less-768 {
     padding: 16px 0;
@@ -43,6 +43,10 @@
   }
 
   &--open {
+
+    .faq__item-title {
+      color: $secondary-text-color;
+    }
 
     .faq__item-icon {
       transform: rotate(45deg);
@@ -62,10 +66,6 @@
 
   &:hover {
 
-    .faq__item-title {
-      color: $main-text-color;
-    }
-
     .faq__item-icon {
 
       &:before, &:after {
@@ -76,13 +76,12 @@
 }
 
 .faq__item-title {
-  font-family: 'Montserrat', sans-serif;
+  flex: 1;
+  margin: 0;
+  color: $main-text-color;
   font-weight: 500;
   font-size: 24px;
-  margin: 0;
-  flex: 1;
-  color: $secondary-text-color;
-  transition: all 200ms;
+  font-family: 'Montserrat', sans-serif;
 
   @include mq-less-768 {
     font-size: 18px;
@@ -90,23 +89,21 @@
 }
 
 .faq__item-icon {
-  width: 40px;
-  height: 40px;
   position: relative;
   display: inline-block;
+  width: 40px;
+  height: 40px;
   margin-right: 8px;
-  transition: all 200ms;
 
   &:before, &:after {
     content: '';
-    width: 100%;
-    height: 2px;
-    background-color: #545B6B;
     position: absolute;
     top: 50%;
+    width: 100%;
+    height: 2px;
     margin-top: calc(-2px / 2);
+    background-color: #545B6B;
     border-radius: 4px;
-    transition: all 200ms;
   }
 
   &:after {
@@ -122,14 +119,13 @@
 .faq__item-text {
   display: none;
   flex-basis: 100%;
-  transition: all 200ms;
   margin: 24px 0 0;
-  line-height: 1.5;
-  color: $main-text-color;
   padding-right: 72px;
+  color: $main-text-color;
+  line-height: 1.5;
 
   @include mq-less-768 {
-    font-size: 16px;
     padding-right: 0;
+    font-size: 16px;
   }
 }

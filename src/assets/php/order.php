@@ -14,7 +14,7 @@
 	));
 
 	function send_mail($message){
-		$mail_to = "p.tataurov92@gmail.com";
+		$mail_to = "hello@zelsmoke.ru";
 		$subject = "Заказ на ZelSmoke Зеленоград";
 		$headers= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-type: text/html; charset=utf-8\r\n";
