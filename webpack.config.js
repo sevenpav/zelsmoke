@@ -146,7 +146,7 @@ const config = {
 		}]),
 		!isDev && new CopyWebpackPlugin([{
 			from: './assets/seo/**',
-			to: './'
+			to: './[name].[ext]'
 		}])
 	].filter(Boolean)
 };
