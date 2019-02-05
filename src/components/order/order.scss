@@ -50,6 +50,7 @@
 .order__list {
   display: flex;
   justify-content: center;
+  transition: none;
 
   &--animate {
     transition: transform 300ms ease-out;
