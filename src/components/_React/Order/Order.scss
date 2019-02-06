@@ -50,6 +50,7 @@
 .order__list {
   display: flex;
   justify-content: center;
+  transition: none;
 
   &--animate {
     transition: transform 300ms ease-out;
@@ -147,7 +148,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../../assets/img/noise.gif');
+    background-image: url('../../../assets/img/noise.gif');
     border-radius: 50%;
     opacity: .02;
   }

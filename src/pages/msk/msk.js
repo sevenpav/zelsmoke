@@ -3,7 +3,7 @@ import '../../components/button/button';
 import '../../components/header/header';
 import '../../components/how/how';
 import '../../components/faq/faq';
-import '../../components/order/order';
+import '../../components/_React/Order/Order';
 import '../../components/terms/terms';
 import '../../components/success/success';
 import '../../components/footer/footer';

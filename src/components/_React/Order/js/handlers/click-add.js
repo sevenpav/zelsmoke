@@ -1,6 +1,6 @@
 import { getNewChoiceWrapNode } from '../node-creator';
 import { addBowlToTotal, createNewBowl } from '../total-utils'
-import sliderInit from '../slider';
+import sliderInit from '../../slider';
 import { handlerClickBtnClose } from './click-close';
 import { handlerClickItem } from './click-item';
 

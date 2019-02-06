@@ -1,0 +1,21 @@
+{
+  "plugins": [
+    [
+      "inline-react-svg",
+      {
+        "svgo": {
+          "plugins": [
+            {
+              "removeAttrs": { "attrs": "(data-name)" }
+            },
+            {
+              "cleanupIDs": true
+            }
+          ]
+
+        }
+      }
+    ],
+    "@babel/plugin-proposal-class-properties"
+  ]
+}
