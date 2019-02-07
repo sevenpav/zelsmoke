@@ -2,7 +2,7 @@
 	$msg_box = "";
 	$message .= "<br/><img src='http://zelsmoke.ru/img/logo.png' width='160' style='display: block;'><br/>";
 	$message .= "Имя: <b>" . $_POST['name'] . "</b><br/>";
-	$message .= "Номер: <b>" . $_POST['phone'] . "</b><br/>";
+	$message .= "Номер: <b>" . $_POST['phone'] . "</b><br/><br/>";
 	$message .= "Основной кальян: <b>" . $_POST['hookah'] . "</b><br/>";
 	$message .= "Дополнительные чаши:<b>" . $_POST['bowls'] . "</b><br/>";
 	$message .= "Сумма заказа: <b>" . $_POST['sum'] ." руб.</b><br/><br/>";

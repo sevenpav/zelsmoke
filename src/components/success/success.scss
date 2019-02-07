@@ -2,16 +2,19 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 10;
+  display: none;
   width: 100%;
   min-width: 320px;
   height: 100%;
 
   &--show {
-    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--animate {
 
     .success__wrapper {
       opacity: 1;
@@ -28,7 +31,8 @@
   background-color: #232A3C;
   border: 1px solid #545B6B;
   border-radius: 4px;
-  opacity: 0;
+  opacity: 0.01;
+  transition: all 200ms linear;
 
   @include mq-less-1024 {
     padding: 32px 24px;

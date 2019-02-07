@@ -2,12 +2,8 @@ import './Form.scss';
 import React from 'react';
 
 import cn from 'classnames';
-
 import Button from '../Button/Button';
-
 import IMask from 'imask';
-
-
 
 export default class Form extends React.Component {
 
@@ -15,7 +11,6 @@ export default class Form extends React.Component {
 		name: '',
 		phone: ''
 	};
-
 
 	componentDidMount() {
 		const form = document.querySelector('.form');
@@ -30,6 +25,10 @@ export default class Form extends React.Component {
 			document.documentElement.classList.add('overflow-fix');
 			bodyNode.classList.add('darken');
 			termsNode.classList.add('terms--show');
+
+			setTimeout(() => {
+				termsNode.classList.add('terms--animate');
+			}, 0);
 		})
 	};
 
@@ -102,8 +101,12 @@ export default class Form extends React.Component {
 					const successBlock = document.querySelector('.success');
 
 					document.documentElement.classList.add('overflow-fix');
-					successBlock.classList.add('success--show');
 					document.body.classList.add('darken');
+					successBlock.classList.add('success--show');
+
+					setTimeout(() => {
+						successBlock.classList.add('success--animate');
+					}, 0);
 				} else {
 					throw new Error('Ошибка отправки данных');
 				}

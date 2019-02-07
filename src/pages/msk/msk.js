@@ -1,9 +1,0 @@
-import '../../components/menu/menu';
-import '../../components/button/button';
-import '../../components/header/header';
-import '../../components/how/how';
-import '../../components/faq/faq';
-import '../../components/_React/Order/Order';
-import '../../components/terms/terms';
-import '../../components/success/success';
-import '../../components/footer/footer';

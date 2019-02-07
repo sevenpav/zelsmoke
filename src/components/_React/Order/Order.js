@@ -3,6 +3,8 @@ import './Order.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 import Form from '../Form/Form';
 
 import { uniqueId } from 'lodash';
@@ -127,8 +129,13 @@ class Bowl extends React.Component {
 						<ItemBowl name={'Ананас'} price={1000} clickItem={updateBowls} id={id} filterBowls={filterBowls} />
 					</ul>
 				</div>
-				{ isLast && <Total totalPrice={totalPrice} quantity={bowls.length}/> }
-				{ isLast && !isMax && <Btn handler={addBowl}/> }
+				<ReactCSSTransitionGroup
+					transitionName="bowl-footer"
+					transitionEnterTimeout={400}
+					transitionLeave={false}>
+						{ isLast && <Total totalPrice={totalPrice} quantity={bowls.length}/> }
+						{ isLast && !isMax && <Btn handler={addBowl}/> }
+				</ReactCSSTransitionGroup>
 			</div>
 		)
 	};
@@ -261,15 +268,21 @@ class Order extends React.Component {
 
 		const hookahStr = `<br>Чаша: ${hookah.bowl.name}<br>Наполнитель: ${hookah.filler.name}<br>Цена ${hookah.priceHookah} руб.<br>`;
 
-		const bowlsStr = bowls.reduce((acc, bowl, idx) => {
-			if (idx === 0) {
-				acc += `<br>Чаша: ${bowl.name}<br>Цена: ${bowl.price} руб.<br>`;
-			} else {
-				acc += `____<br>Чаша: ${bowl.name}<br>Цена: ${bowl.price} руб.<br>`;
-			}
+		let bowlsStr;
 
-			return acc;
-		}, '');
+		if (bowls.length === 0) {
+			bowlsStr = ` Нет<br>`;
+		} else {
+			bowlsStr = bowls.reduce((acc, bowl, idx) => {
+				if (idx === 0) {
+					acc += `<br>Чаша: ${bowl.name}<br>Цена: ${bowl.price} руб.<br>`;
+				} else {
+					acc += `____<br>Чаша: ${bowl.name}<br>Цена: ${bowl.price} руб.<br>`;
+				}
+
+				return acc;
+			}, '');
+		}
 
 		const totalPriceStr = `${totalPrice}`;
 
@@ -327,14 +340,38 @@ class Order extends React.Component {
 						<p className="order__price-label">Цена:</p>
 						<p className="order__price-sum">{hookah.priceHookah} руб.</p>
 					</div>
-					{
-						!this.state.bowls.length && <Btn handler={this.addBowl} />
-					}
+					<ReactCSSTransitionGroup
+						transitionName="bowl-footer"
+						transitionEnterTimeout={400}
+						transitionLeave={false}>
+						{
+							!this.state.bowls.length && <Btn handler={this.addBowl} />
+						}
+					</ReactCSSTransitionGroup>
 				</div>
-				{ this.state.bowls.map((bowl, idx, arr) => {
-					const isMax = arr.length === maxQuantity;
+				<ReactCSSTransitionGroup
+					transitionName="bowls"
+					transitionEnterTimeout={200}
+					transitionLeave={false}>
+					{ this.state.bowls.map((bowl, idx, arr) => {
+						const isMax = arr.length === maxQuantity;
 
-					if (idx === arr.length - 1) {
+						if (idx === arr.length - 1) {
+
+							return (
+								<Bowl
+									key={bowl.id}
+									id={bowl.id}
+									addBowl={addBowl}
+									updateBowls={updateBowls}
+									totalPrice={totalPrice}
+									filterBowls={filterBowls}
+									bowls={bowls}
+									isLast={true}
+									isMax={isMax}
+								/>
+							)
+						}
 
 						return (
 							<Bowl
@@ -345,25 +382,12 @@ class Order extends React.Component {
 								totalPrice={totalPrice}
 								filterBowls={filterBowls}
 								bowls={bowls}
-								isLast={true}
-								isMax={isMax}
 							/>
 						)
-					}
-
-					return (
-						<Bowl
-							key={bowl.id}
-							id={bowl.id}
-							addBowl={addBowl}
-							updateBowls={updateBowls}
-							totalPrice={totalPrice}
-							filterBowls={filterBowls}
-							bowls={bowls}
-						/>
-					)
 					})
-				}
+					}
+				</ReactCSSTransitionGroup>
+
 				<Form mixes={'order'} onSubmitForm={onSubmitForm}/>
 			</div>
 		)

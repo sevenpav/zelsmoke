@@ -223,3 +223,23 @@
     margin: 80px auto 0;
   }
 }
+
+// React animation
+
+.bowls-enter {
+  opacity: 0.01;
+}
+
+.bowls-enter.bowls-enter-active {
+  opacity: 1;
+  transition: all 200ms linear;
+}
+
+.bowl-footer-enter {
+  opacity: 0.01;
+}
+
+.bowl-footer-enter.bowl-footer-enter-active {
+  opacity: 1;
+  transition: all 200ms linear;
+}

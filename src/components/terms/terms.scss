@@ -4,15 +4,19 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -10;
-  display: flex;
-  align-items: center;
-  opacity: 0;
+  z-index: 100;
+  display: none;
+  opacity: 0.01;
+  transition: all 200ms linear;
 
   @include centered-width(true);
 
   &--show {
-    z-index: 1000;
+    display: flex;
+    align-items: center;
+  }
+
+  &--animate {
     opacity: 1;
   }
 }
