@@ -1,0 +1,55 @@
+.terms__list {
+  margin: 0;
+  padding-left: 32px;
+  color: $secondary-text-color;
+  font-size: 20px;
+  line-height: 30px;
+
+  @include mq-less-1024 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  @include mq-less-768 {
+    padding-left: 24px;
+  }
+}
+
+.terms__item {
+  padding-left: 8px;
+
+  &:not(:last-child) {
+    margin-bottom: 32px;
+
+    @include mq-less-1024 {
+      margin-bottom: 24px;
+    }
+
+    @include mq-less-768 {
+      margin-bottom: 16px;
+    }
+  }
+
+  @include mq-less-768 {
+    padding-left: 0;
+  }
+
+  ul {
+    margin-top: 8px;
+    margin-left: 24px;
+    color: $main-text-color;
+
+    @include mq-less-1360 {
+      margin-left: 16px;
+    }
+
+    @include mq-less-768 {
+      margin-left: 0;
+    }
+  }
+}
+
+.terms__item-text {
+  margin: 0;
+  color: $main-text-color;
+}

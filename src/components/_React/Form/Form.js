@@ -19,16 +19,12 @@ export default class Form extends React.Component {
 		const phoneMask = new IMask(phone, { mask: '+{7} (000) 000-00-00' });
 
 		btnAgreeNode.addEventListener('click', () => {
-			const bodyNode = document.body;
-			const termsNode = document.querySelector('.terms');
+			const body = document.body;
+			const terms = document.querySelector('.terms__modal');
 
 			document.documentElement.classList.add('overflow-fix');
-			bodyNode.classList.add('darken');
-			termsNode.classList.add('terms--show');
-
-			setTimeout(() => {
-				termsNode.classList.add('terms--animate');
-			}, 0);
+			body.classList.add('darken');
+			terms.classList.add('modal--show');
 		})
 	};
 
@@ -56,13 +52,21 @@ export default class Form extends React.Component {
 		const btn = document.querySelector('.form__button');
 		const spinner = document.querySelector('.button__spinner');
 
+		btn.setAttribute('disabled', 'true');
+		btn.classList.add('form__button--disabled');
+
 		let isError = false;
 
 		const addError = el => {
-			el.parentElement.classList.add('form__field--error');
-			setTimeout(() => {
-				el.parentElement.classList.remove('form__field--error');
-			}, 900)
+
+			if (!el.parentElement.classList.contains('form__field--error')) {
+				el.parentElement.classList.add('form__field--error');
+
+				setTimeout(() => {
+					el.parentElement.classList.remove('form__field--error');
+				}, 900)
+			}
+
 			isError = true;
 		};
 
@@ -81,6 +85,8 @@ export default class Form extends React.Component {
 		});
 
 		if (isError) {
+			btn.removeAttribute('disabled');
+			btn.classList.remove('form__button--disabled');
 			return false;
 		}
 
@@ -97,19 +103,21 @@ export default class Form extends React.Component {
 				btn.classList.remove('form__button--loading');
 				spinner.classList.remove('button__spinner--active');
 
+				btn.removeAttribute('disabled');
+				btn.classList.remove('form__button--disabled');
+
 				if (res.ok) {
-					const successBlock = document.querySelector('.success');
+					const body = document.body;
+					const success = document.querySelector('.success__modal');
 
 					document.documentElement.classList.add('overflow-fix');
-					document.body.classList.add('darken');
-					successBlock.classList.add('success--show');
+					body.classList.add('darken');
+					success.classList.add('modal--show');
 
-					setTimeout(() => {
-						successBlock.classList.add('success--animate');
-					}, 0);
 				} else {
 					throw new Error('Ошибка отправки данных');
 				}
+
 			})
 			.catch((e) => {
 				console.log(e.message);
@@ -119,9 +127,7 @@ export default class Form extends React.Component {
 
 	render() {
 		const { mixes } = this.props;
-
 		const { onSubmit, onInput } = this;
-
 		const formClass = cn({
 			form: true,
 			[`${mixes}__form`]: mixes && true
@@ -129,17 +135,46 @@ export default class Form extends React.Component {
 
 		return (
 
-			<form className={formClass} action="" autoComplete="off" onSubmit={onSubmit}>
+			<form
+				className={formClass}
+				action=""
+				autoComplete="off"
+				onSubmit={onSubmit}
+			>
 				<div className="form__field">
-					<input className="form__input" id="name" type="text" name="name" placeholder="Паша" onChange={onInput} />
-					<label className="form__label" htmlFor="name">Ваше имя</label>
+					<input className="form__input"
+								 id="name"
+								 type="text"
+								 name="name"
+								 placeholder="Паша"
+								 onChange={onInput}
+					/>
+					<label
+						className="form__label"
+						htmlFor="name"
+					>Ваше имя</label>
 				</div>
 				<div className="form__field">
-					<input className="form__input" id="phone" type="tel" name="phone" placeholder="926-909-96-00" onChange={onInput} />
-					<label className="form__label" htmlFor="phone">Номер</label><span className="form__field-help">Номер должен быть 11 цифр</span>
+					<input
+						className="form__input"
+						id="phone"
+						type="tel"
+						name="phone"
+						placeholder="926-909-96-00"
+						onChange={onInput}
+					/>
+					<label
+						className="form__label"
+						htmlFor="phone"
+					>Номер</label>
+					<span className="form__field-help">Номер должен быть 11 цифр</span>
 				</div>
 				<div className="form__field-button">
-					<Button text={'Заказать'} type={'submit'} mixes={'form'}>Заказать</Button>
+					<Button
+						text={'Заказать'}
+						type={'submit'}
+						mixes={'form'}
+					>Заказать</Button>
 					<span className="form__agree-text">
 					Нажимая на кнопку вы подтверждаете, что <span className="form__agree-btn">согласны с условиями договора аренды</span>
 				</span>

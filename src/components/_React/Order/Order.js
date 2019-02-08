@@ -8,138 +8,16 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Form from '../Form/Form';
 
 import { uniqueId } from 'lodash';
-import cn from 'classnames';
 
-import BowlSvg from './img/icon-bowl.svg';
-import GrapefruitSvg from './img/icon-grapefruit.svg';
-import PineappleSvg from './img/icon-pineapple.svg';
-import FillerWaterSvg from './img/icon-filler-water.svg';
-import FillerMilkSvg from './img/icon-filler-milk.svg';
-import FillerFreshSvg from './img/icon-filler-fresh.svg';
+import Bowl from './subComponents/Bowl';
+import { ItemBowl, ItemFiller } from './subComponents/Item';
+import { Btn } from './subComponents/Btn';
 
 import sliderInit from './slider';
 
-const Btn = props => <button className="order__btn-add" type="button" onClick={props.handler}>Добавить еще одну чашу со скидкой 50%</button>;
+const { Provider, Consumer } = React.createContext();
 
-const Total = ({ totalPrice, quantity }) => {
-	const str = quantity !== 4 ? 'чаши' : 'чаш';
-
-	return (
-		<div className="order__total">
-			<p className="order__total-label">Итого:</p>
-			<p className="order__total-sum">{ quantity + 1 } { str } за { totalPrice } руб.</p>
-		</div>
-	)
-};
-
-const ItemBowl = (props) => {
-	const { name, price, clickItem, id, filterBowls } = props;
-	const Icon = () => {
-		if (name === 'Глиняная') {
-			return <BowlSvg className='order__icon'/>
-		}
-		if (name === 'Грейпфрут') {
-			return <GrapefruitSvg className='order__icon'/>
-		}
-
-		return <PineappleSvg className='order__icon'/>
-	};
-
-	const itemClass = cn({
-		'order__item': true,
-		'order__item--active': props.isActive
-	});
-
-	return (
-		<li className={itemClass} onClick={e => clickItem(e, name, price, id)}>
-			<div className="order__sticker">
-				{ props.isFirst && <button className="order__btn-close" type="button" onClick={(e) => filterBowls(e, id)} /> }
-				<Icon />
-			</div>
-			<div className="order__desc">
-				<p className="order__item-name">{ name }</p>
-				<p className="order__item-price">{ price } руб.</p>
-			</div>
-		</li>
-	)
-};
-
-const ItemFiller = (props) => {
-	const { name, price, handler } = props;
-
-	const Icon = () => {
-		if (name === 'Вода') {
-			return <FillerWaterSvg className='order__icon'/>
-		}
-		if (name === 'Молоко') {
-			return <FillerMilkSvg className='order__icon'/>
-		}
-
-		return <FillerFreshSvg className='order__icon'/>
-	};
-
-	const itemClass = cn({
-		'order__item': true,
-		'order__item--active': props.isActive
-	});
-
-	return (
-		<li className={itemClass} onClick={e => handler(e, name, price)}>
-			<div className="order__sticker">
-				<Icon />
-			</div>
-			<div className="order__desc">
-				<p className="order__item-name">{ name }</p>
-				<p className="order__item-price">{ price } руб.</p>
-			</div>
-		</li>
-	)
-};
-
-
-class Bowl extends React.Component {
-
-	listRef = React.createRef();
-
-	componentDidMount() {
-		const node = this.listRef.current;
-
-		sliderInit([node]);
-	};
-
-	render() {
-
-		const {
-			updateBowls,
-			id,
-			totalPrice,
-			isLast,
-			addBowl,
-			filterBowls,
-			isMax,
-			bowls
-		} = this.props;
-
-		return (
-			<div className="order__extra-choice-wrap">
-				<div className="order__choice">
-					<ul className="order__list" ref={this.listRef}>
-						<ItemBowl name={'Глиняная'} price={750} isActive={true} isFirst={true} clickItem={updateBowls} id={id} filterBowls={filterBowls} />
-						<ItemBowl name={'Грейпфрут'} price={900} clickItem={updateBowls} id={id} filterBowls={filterBowls} />
-						<ItemBowl name={'Ананас'} price={1000} clickItem={updateBowls} id={id} filterBowls={filterBowls} />
-					</ul>
-				</div>
-				<ReactCSSTransitionGroup
-					transitionName="bowl-footer"
-					transitionEnterTimeout={400}
-					transitionLeave={false}>
-						{ isLast && <Total totalPrice={totalPrice} quantity={bowls.length}/> }
-						{ isLast && !isMax && <Btn handler={addBowl}/> }
-				</ReactCSSTransitionGroup>
-			</div>
-		)
-	};
-}
+export { Consumer };
 
 class Order extends React.Component {
 
@@ -184,7 +62,6 @@ class Order extends React.Component {
 		this.classToggle(e);
 		this.updateHookah('filler', name, price);
 		this.calcTotalPrice();
-
 	};
 
 	calcTotalPrice = () => {
@@ -212,7 +89,6 @@ class Order extends React.Component {
 			bowls: filteredBowls
 		});
 
-
 		this.calcTotalPrice();
 	}
 
@@ -238,7 +114,6 @@ class Order extends React.Component {
 
 	updateHookah = (choice, name, price) => {
 		const hookah = this.state.hookah;
-
 		const otherPrice = choice === 'bowl' ? hookah.filler.price : hookah.bowl.price;
 
 		this.setState({
@@ -324,16 +199,29 @@ class Order extends React.Component {
 				<div className="order__choice-wrap">
 					<div className="order__choice" id="bowl">
 						<ul className="order__list">
-							<ItemBowl name={'Глиняная'} price={1500} isActive={true} clickItem={updateBowl} />
-							<ItemBowl name={'Грейпфрут'} price={1800} clickItem={updateBowl} />
-							<ItemBowl name={'Ананас'} price={2000} clickItem={updateBowl} />
+							<ItemBowl
+								name={'Глиняная'}
+								price={1500}
+								isActive={true}
+								clickItem={updateBowl}
+							/>
+							<ItemBowl
+								name={'Грейпфрут'}
+								price={1800}
+								clickItem={updateBowl}
+							/>
+							<ItemBowl
+								name={'Ананас'}
+								price={2000}
+								clickItem={updateBowl}
+							/>
 						</ul>
 					</div>
 					<div className="order__choice" id="filler">
 						<ul className="order__list">
-							<ItemFiller name={'Вода'} price={0} isActive={true} handler={updateFiller}/>
-							<ItemFiller name={'Молоко'} price={100} handler={updateFiller}/>
-							<ItemFiller name={'Фреш микс'} price={250} handler={updateFiller}/>
+							<ItemFiller name={'Вода'} price={0} isActive={true} updateFiller={updateFiller}/>
+							<ItemFiller name={'Молоко'} price={100} updateFiller={updateFiller}/>
+							<ItemFiller name={'Фреш микс'} price={250} updateFiller={updateFiller}/>
 						</ul>
 					</div>
 					<div className="order__price">

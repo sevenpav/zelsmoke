@@ -1,0 +1,14 @@
+-
+    var content = `
+        <div class="success">
+            <img class="success__img" width="240" alt="Леонардо Ди Каприо" />
+            <div class="success__content">
+                <h5 class="success__title">Настало время покурить кальян!</h5>
+                <p class="success__text">Скоро мы с вами свяжемся для<br /> подтверждения заказа.</p>
+            </div>
+        </div>
+    `
+
+mixin success
+    include ../modal/modal
+    +modal('Успех', content, 'success')

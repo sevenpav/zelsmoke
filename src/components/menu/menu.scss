@@ -110,3 +110,11 @@
 }
 
 // Mixes
+
+.menu__hamburger {
+  display: none;
+
+  @include mq-less-768 {
+    display: inline-flex;
+  }
+}

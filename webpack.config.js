@@ -99,7 +99,7 @@ const config = {
 					{
 						loader: 'file-loader',
 						options: {
-							outputPath: 'fonts',
+							outputPath: './',
 						},
 					}
 				]
@@ -107,11 +107,19 @@ const config = {
 			{
 				test: /\.(jpe?g|png|gif|svg|ico)$/i,
 				use: [
+					'file-loader',
 					{
-						loader: 'file-loader',
+						loader: 'image-webpack-loader',
 						options: {
-							outputPath: 'img',
-						},
+
+							disable: isDev,
+							pngquant: {
+								quality: '95-100'
+							},
+							svgo: {
+								cleanupIDs: true
+							}
+						}
 					}
 				]
 			},
@@ -146,7 +154,7 @@ const config = {
 		}]),
 		!isDev && new CopyWebpackPlugin([{
 			from: './assets/img/logo.png',
-			to: './img'
+			to: './'
 		}]),
 		!isDev && new CopyWebpackPlugin([{
 			from: './assets/seo/**',

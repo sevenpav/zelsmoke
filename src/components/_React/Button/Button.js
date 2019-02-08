@@ -13,7 +13,10 @@ const Button = ({ text, type, mixes }) => {
 	})
 
 	return (
-		<button className={btnClass} type={type}>
+		<button
+			className={btnClass}
+			type={type}
+		>
 			{ type === 'submit' && <Spinner className='button__spinner' /> }
 			{ text }
 		</button>

@@ -8,32 +8,23 @@ $hamburger-layer-border-radius : 2px !default;
 $hamburger-hover-opacity       : 0.7 !default;
 $hamburger-active-layer-color  : $hamburger-layer-color !default;
 $hamburger-active-hover-opacity: $hamburger-hover-opacity !default;
-
 $hamburger-hover-use-filter   : false !default;
 $hamburger-hover-filter       : opacity(50%) !default;
 $hamburger-active-hover-filter: $hamburger-hover-filter !default;
 
 .hamburger {
+  margin: 0;
   padding: $hamburger-padding-y $hamburger-padding-x;
-  display: none;
-  cursor: pointer;
-
-  transition-property: opacity, filter;
-  transition-duration: 0.15s;
-  transition-timing-function: linear;
-
-  // Normalize (<button>)
-  font: inherit;
+  overflow: visible;
   color: inherit;
+  font: inherit;
   text-transform: none;
   background-color: transparent;
   border: 0;
-  margin: 0;
-  overflow: visible;
-
-  @include mq-less-768 {
-    display: inline-flex;
-  }
+  cursor: pointer;
+  transition-timing-function: linear;
+  transition-duration: 0.15s;
+  transition-property: opacity, filter;
 
   &:hover {
     @if $hamburger-hover-use-filter == true {
@@ -83,31 +74,30 @@ $hamburger-active-hover-filter: $hamburger-hover-filter !default;
 }
 
 .hamburger-box {
+  position: relative;
+  display: inline-block;
   width: $hamburger-layer-width;
   height: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
-  display: inline-block;
-  position: relative;
 }
 
 .hamburger-inner {
-  display: block;
   top: 50%;
+  display: block;
   margin-top: $hamburger-layer-height / -2;
-
-  transition-duration: 0.075s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  transition-duration: 0.075s;
 
   &,
   &:before,
   &:after {
+    position: absolute;
     width: $hamburger-layer-width;
     height: $hamburger-layer-height;
     background-color: $hamburger-layer-color;
     border-radius: $hamburger-layer-border-radius;
-    position: absolute;
-    transition-property: transform;
-    transition-duration: 0.15s;
     transition-timing-function: ease;
+    transition-duration: 0.15s;
+    transition-property: transform;
   }
 
   &:before,

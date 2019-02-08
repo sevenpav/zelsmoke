@@ -179,6 +179,10 @@
   &--loading {
     color: fade_out($primary-text-color, 1);
   }
+
+  &--disabled {
+    background-color: fade_out(#32846B, .2);
+  }
 }
 
 // Keyframes

@@ -1,7 +1,9 @@
 import './header.scss';
 import '../button/button';
 
-import { isTouchDevice } from '../../main';
+import { fullpage } from '../../main';
+
+fullpage();
 
 import smoothscroll from 'smoothscroll-polyfill';
 
@@ -17,12 +19,3 @@ btn.onclick = () => {
 	});
 }
 
-const fullpage = document.querySelector('.fullpage');
-
-fullpage.style.height = `${window.innerHeight}px`;
-
-window.addEventListener('resize', () => {
-	if (!isTouchDevice) {
-		fullpage.style.height = `${window.innerHeight}px`;
-	}
-});

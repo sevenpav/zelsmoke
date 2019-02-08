@@ -1,13 +1,13 @@
 <?php
 	$msg_box = "";
-	$message .= "<br/><img src='http://zelsmoke.ru/img/logo.png' width='160' style='display: block;'><br/>";
+	$message .= "<br/><img src='http://zelsmoke.ru/logo.png' width='160' style='display: block;'><br/>";
 	$message .= "Имя: <b>" . $_POST['name'] . "</b><br/>";
 	$message .= "Номер: <b>" . $_POST['phone'] . "</b><br/><br/>";
 	$message .= "Основной кальян: <b>" . $_POST['hookah'] . "</b><br/>";
 	$message .= "Дополнительные чаши:<b>" . $_POST['bowls'] . "</b><br/>";
 	$message .= "Сумма заказа: <b>" . $_POST['sum'] ." руб.</b><br/><br/>";
 	$message .= "<span style='font: 20px sans-serif; display: block;'><b>Настало время забить кальянчик!</b></span><br/>";
-	$message .= "<img src='http://zelsmoke.ru/img/eb251943ee32229109f1cbad745939c9.png' width='240' style='display: block;'>";
+	$message .= "<img src='http://zelsmoke.ru/4088c395a13ff732757535518fb90be3.png' width='240' style='display: block;'>";
 	send_mail($message);
 
 	echo json_encode(array(

@@ -1,7 +1,7 @@
 .how {
   @include centered-width;
   margin-bottom: 80px;
-  background: url('hookah.svg') no-repeat bottom center;
+  background: url('img/hookah.svg') no-repeat bottom center;
   border-bottom: 1px solid #545B6B;
 
   @include mq-less-1360 {
