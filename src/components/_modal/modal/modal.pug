@@ -1,8 +1,9 @@
-mixin modal(title, content, mixes)
+mixin modal(title, content, mixes, btnName)
     .modal(class=`${mixes}__modal`)
         .modal__wrap
-            h5.modal__title= title
+            .modal__header
+                h5.modal__title!= title
             .modal__content!= content
             .modal__footer
                 include ../../button/button
-                +button('Закрыть', 'button', 'modal')
+                +button(btnName, 'button', 'modal')

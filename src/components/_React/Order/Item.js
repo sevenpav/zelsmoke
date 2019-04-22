@@ -2,12 +2,12 @@ import React from 'react';
 
 import cn from 'classnames';
 
-import BowlSvg from '../img/icon-bowl.svg';
-import GrapefruitSvg from '../img/icon-grapefruit.svg';
-import PineappleSvg from '../img/icon-pineapple.svg';
-import FillerWaterSvg from '../img/icon-filler-water.svg';
-import FillerMilkSvg from '../img/icon-filler-milk.svg';
-import FillerFreshSvg from '../img/icon-filler-fresh.svg';
+import BowlSvg from './img/icon-bowl.svg';
+import GrapefruitSvg from './img/icon-grapefruit.svg';
+import PineappleSvg from './img/icon-pineapple.svg';
+import FillerWaterSvg from './img/icon-filler-water.svg';
+import FillerMilkSvg from './img/icon-filler-milk.svg';
+import FillerFreshSvg from './img/icon-filler-fresh.svg';
 
 
 const iconMap = {

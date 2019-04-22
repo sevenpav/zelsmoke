@@ -1,9 +1,11 @@
 import './Button.scss';
 
-import Spinner from './spinner.svg';
-
 import React from 'react';
 import cn from 'classnames';
+
+import Spinner from './spinner.svg';
+
+
 
 const Button = ({ text, type, mixes }) => {
 

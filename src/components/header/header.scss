@@ -36,6 +36,10 @@
 
   @include mq-less-768 {
     font-size: 18px;
+
+    br {
+      display: none;
+    }
   }
 }
 

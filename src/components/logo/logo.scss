@@ -1,8 +1,9 @@
 .logo {
+  display: flex;
 
   svg {
     @include mq-less-768 {
-      width: 140px;
+      width: 160px;
       height: auto;
     }
   }

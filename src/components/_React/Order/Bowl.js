@@ -1,5 +1,5 @@
 import React from 'react';
-import sliderInit from '../slider'
+import sliderInit from './slider'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { ItemBowl } from './Item';
@@ -46,7 +46,7 @@ export default class Bowl extends React.Component {
 					<ul className="order__list" ref={this.listRef}>
 						<ItemBowl
 							name={'Глиняная'}
-							price={750}
+							price={800}
 							isActive={true}
 							isFirst={true}
 							clickItem={updateBowls}
@@ -55,14 +55,14 @@ export default class Bowl extends React.Component {
 						/>
 						<ItemBowl
 							name={'Грейпфрут'}
-							price={900}
+							price={950}
 							clickItem={updateBowls}
 							id={id}
 							filterBowls={filterBowls}
 						/>
 						<ItemBowl
 							name={'Ананас'}
-							price={1000}
+							price={1100}
 							clickItem={updateBowls}
 							id={id}
 							filterBowls={filterBowls}

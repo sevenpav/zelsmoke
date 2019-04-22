@@ -17,15 +17,26 @@ export default class Form extends React.Component {
 		const btnAgreeNode = form.querySelector('.form__agree-btn');
 		const phone = document.getElementById('phone');
 		const phoneMask = new IMask(phone, { mask: '+{7} (000) 000-00-00' });
+		const body = document.body;
 
 		btnAgreeNode.addEventListener('click', () => {
-			const body = document.body;
 			const terms = document.querySelector('.terms__modal');
 
 			document.documentElement.classList.add('overflow-fix');
 			body.classList.add('darken');
 			terms.classList.add('modal--show');
 		})
+
+		const promocodeNode = document.querySelector('.promocode__modal');
+		const btnPromocodeNode = form.querySelector('.form__promocode-btn');
+
+		btnPromocodeNode.addEventListener('click', () => {
+			document.documentElement.classList.add('overflow-fix');
+			body.classList.add('darken');
+			promocodeNode.classList.add('modal--show');
+		});
+
+
 	};
 
 	onInput = e => {
@@ -175,6 +186,7 @@ export default class Form extends React.Component {
 						type={'submit'}
 						mixes={'form'}
 					>Заказать</Button>
+					<span className="form__promocode-btn">Есть промокод?</span>
 					<span className="form__agree-text">
 					Нажимая на кнопку вы подтверждаете, что <span className="form__agree-btn">согласны с условиями договора аренды</span>
 				</span>
