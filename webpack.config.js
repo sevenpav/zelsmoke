@@ -5,11 +5,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-
 const { getDirBasenames } = require('./utils.js')
-
 const isDev = process.env.NODE_ENV === 'development'
-
 const pages = getDirBasenames(path.resolve('./src/pages'))
 
 const instances = pages.map(page => {
@@ -49,8 +46,7 @@ const config = {
   devtool: 'inline-source-map',
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, 'dist/static'),
-    publicPath: 'static/'
+    path: path.join(__dirname, 'dist')
   },
   devServer: {
     contentBase: './dist',
