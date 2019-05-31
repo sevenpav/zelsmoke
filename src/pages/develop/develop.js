@@ -1,1 +1,2 @@
-import '../../components/develop/develop';
+import './develop.scss'
+import '../../components/develop/develop'

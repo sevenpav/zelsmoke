@@ -1,11 +1,16 @@
-import '../../components/menu/menu';
-import '../../components/header/header';
-import '../../components/how/how';
-import '../../components/faq/faq';
+import './index.scss'
 
-import '../../components/_React/Order/Order';
-import '../../components/footer/footer';
+import '../../components/menu/menu'
+import '../../components/header/header'
+import '../../components/how/how'
+import '../../components/faq/faq'
+
+import '../../components/footer/footer'
 
 // modals
-import '../../components/_modal/terms/terms';
-import '../../components/_modal/success/success';
+import '../../components/_modal/terms/terms'
+import '../../components/_modal/success/success'
+
+import { fullpage } from '../../assets/js/fullpage'
+
+fullpage()

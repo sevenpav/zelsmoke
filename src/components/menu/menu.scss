@@ -1,3 +1,6 @@
+@import './hamburger.scss';
+@import '~@/components/logo/logo';
+
 .menu {
   position: absolute;
   right: 0;
@@ -29,8 +32,8 @@
       z-index: -20;
       width: 100%;
       height: 100%;
-      background-image: url('../../assets/img/noise.gif');
-      opacity: .02;
+      background-image: url(~@/public/img/noise.gif);
+      opacity: 0.02;
     }
 
     .menu__list {
@@ -41,7 +44,6 @@
     }
 
     .menu__item {
-
       &:not(:last-child) {
         margin-right: 0;
         margin-bottom: 32px;
@@ -92,21 +94,21 @@
   font-size: 20px;
 
   &:hover {
-    color: fade_out($main-text-color, .2);
+    color: fade_out($main-text-color, 0.2);
   }
 }
 
 .menu__feedback-link {
   display: none;
-	flex-basis: 100%;
-	justify-content: center;
-	align-self: flex-end;
-	padding: 32px 0;
-	color: $primary-text-color;
-	font-size: 14px;
-	letter-spacing: 1.6px;
-	text-transform: uppercase;
-	border-top: 1px solid #545B6B;
+  flex-basis: 100%;
+  justify-content: center;
+  align-self: flex-end;
+  padding: 32px 0;
+  color: $primary-text-color;
+  font-size: 14px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  border-top: 1px solid #545b6b;
 }
 
 // Mixes

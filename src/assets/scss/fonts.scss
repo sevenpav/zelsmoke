@@ -3,11 +3,9 @@
   font-family: 'Montserrat';
   font-display: swap;
   font-style: normal;
-  src:
-
-          url('../fonts/woff2/Montserrat-Medium.woff2') format('woff2'),
-          url('../fonts/woff/Montserrat-Medium.woff') format('woff'),
-          url('../fonts/ttf/Montserrat-Medium.ttf') format('truetype');
+  src: url(~@/assets/fonts/woff2/Montserrat-Medium.woff2) format('woff2'),
+    url(~@/assets/fonts/woff/Montserrat-Medium.woff) format('woff'),
+    url(~@/assets/fonts/ttf/Montserrat-Medium.ttf) format('truetype');
 }
 
 @font-face {
@@ -15,10 +13,9 @@
   font-family: 'Montserrat';
   font-display: swap;
   font-style: normal;
-  src:
-          url('../fonts/woff2/Montserrat-Black.woff2') format('woff2'),
-          url('../fonts/woff/Montserrat-Black.woff') format('woff'),
-          url('../fonts/ttf/Montserrat-Black.ttf') format('truetype');
+  src: url(~@/assets/fonts/woff2/Montserrat-Black.woff2) format('woff2'),
+    url(~@/assets/fonts/woff/Montserrat-Black.woff) format('woff'),
+    url(~@/assets/fonts/ttf/Montserrat-Black.ttf) format('truetype');
 }
 
 @font-face {
@@ -26,9 +23,7 @@
   font-family: 'Phosphate';
   font-display: swap;
   font-style: normal;
-  src:
-          url('../fonts/woff2/Phosphate-Inline.woff2') format('woff2'),
-          url('../fonts/woff/Phosphate-Inline.woff') format('woff'),
-          url('../fonts/ttf/Phosphate-Inline.ttf') format('truetype');
-
+  src: url(~@/assets/fonts/woff2/Phosphate-Inline.woff2) format('woff2'),
+    url(~@/assets/fonts/woff/Phosphate-Inline.woff) format('woff'),
+    url(~@/assets/fonts/ttf/Phosphate-Inline.ttf) format('truetype');
 }

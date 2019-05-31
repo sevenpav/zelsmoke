@@ -1,2 +1,1 @@
-import './modal.scss';
-import '../../button/button';
+import '../../button/button'

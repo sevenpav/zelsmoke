@@ -1,0 +1,12 @@
+{
+  "editor.fontSize": 16,
+  "prettier.singleQuote": true,
+  "prettier.stylelintIntegration": true,
+  "prettier.semi": false,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "workbench.sideBar.location": "right",
+  "editor.formatOnPaste": true,
+  "emmet.triggerExpansionOnTab": true,
+  "prettier.eslintIntegration": true
+}

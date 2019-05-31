@@ -1,66 +1,76 @@
+const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const { getDirBasenames } = require('./utils.js')
-const isDev = process.env.NODE_ENV === 'development'
-const pages = getDirBasenames(path.resolve('./src/pages'))
+const { getDirectoriesBasenames } = require('./build/utils.js')
+
+const isDev = process.env.NODE_ENV.trim() === 'development'
+const pages = getDirectoriesBasenames(path.resolve('./src/pages'))
 
 const instances = pages.map(page => {
   return new HtmlWebpackPlugin({
     template: `./pages/${page}/${page}.pug`,
     filename: `${page}.html`,
-    hash: true,
-    chunks: ['main', page]
+    chunks: ['common', page]
   })
 })
 
-const entries = pages.reduce(
-  (acc, page) => {
-    acc[page] = `./pages/${page}/${page}.js`
+const entries = pages.reduce((acc, page) => {
+  acc[page] = `./pages/${page}/${page}.js`
 
-    return acc
-  },
-  { main: './main.js' }
-)
-
-const optimization = {
-  minimizer: [
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        output: {
-          comments: false
-        }
-      }
-    }),
-    new OptimizeCSSAssetsPlugin({})
-  ]
-}
+  return acc
+}, {})
 
 const config = {
   context: path.resolve(__dirname, 'src'),
   entry: entries,
   devtool: 'inline-source-map',
   output: {
-    filename: '[name].js',
-    path: path.join(__dirname, 'dist')
+    filename: 'js/[name].js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  resolve: {
+    extensions: ['.js', '.scss', '.pug'],
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      name: 'common'
+    },
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          output: {
+            comments: false
+          }
+        }
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
   },
   devServer: {
-    contentBase: './dist',
-    watchContentBase: true,
-    clientLogLevel: 'none',
-    compress: true
+    hot: false,
+    open: true
   },
-  optimization: isDev ? {} : optimization,
+  mode: !isDev ? 'production' : 'development',
+  watch: isDev,
   module: {
     rules: [
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../'
+            }
+          },
           'css-loader',
           {
             loader: 'postcss-loader',
@@ -69,16 +79,7 @@ const config = {
               plugins: [require('autoprefixer')()]
             }
           },
-          'sass-loader',
-          {
-            loader: 'sass-resources-loader',
-            options: {
-              resources: [
-                path.resolve(__dirname, './src/assets/scss/vars.scss'),
-                path.resolve(__dirname, './src/assets/scss/mixins.scss')
-              ]
-            }
-          }
+          'sass-loader'
         ]
       },
       {
@@ -87,7 +88,7 @@ const config = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
+            presets: ['@babel/preset-env']
           }
         }
       },
@@ -97,7 +98,8 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: './'
+              outputPath: './',
+              name: 'fonts/[name].[ext]'
             }
           }
         ]
@@ -105,13 +107,23 @@ const config = {
       {
         test: /\.(jpe?g|png|gif|svg|ico)$/i,
         use: [
-          'file-loader',
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'img/[name].[ext]'
+            }
+          },
           {
             loader: 'image-webpack-loader',
             options: {
               disable: isDev,
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
               pngquant: {
-                quality: '95-100'
+                quality: '65-90',
+                strip: true
               },
               svgo: {
                 cleanupIDs: true
@@ -141,29 +153,20 @@ const config = {
   plugins: [
     ...instances,
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
+      filename: 'css/[name].css',
+      chunkFilename: 'css/common.css'
     }),
-    new CleanWebpackPlugin(['dist']),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
     !isDev &&
       new CopyWebpackPlugin([
         {
-          from: './assets/php/order.php',
-          to: './'
-        }
-      ]),
-    !isDev &&
-      new CopyWebpackPlugin([
-        {
-          from: './assets/img/logo.png',
-          to: './'
-        }
-      ]),
-    !isDev &&
-      new CopyWebpackPlugin([
-        {
-          from: './assets/seo/**',
-          to: './[name].[ext]'
+          from: path.resolve(__dirname, 'src/public'),
+          to: path.resolve(__dirname, 'dist')
         }
       ])
   ].filter(Boolean)

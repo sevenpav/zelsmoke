@@ -1,8 +1,8 @@
 .how {
   @include centered-width;
   margin-bottom: 80px;
-  background: url('img/hookah.svg') no-repeat bottom center;
-  border-bottom: 1px solid #545B6B;
+  background: url(~@/components/how/img/hookah.svg) no-repeat bottom center;
+  border-bottom: 1px solid #545b6b;
 
   @include mq-less-1360 {
     background-size: 768px 768px;
@@ -59,9 +59,7 @@
     }
   }
 
-
   &:nth-child(odd) {
-
     .how__num {
       width: 151px;
 
@@ -91,7 +89,6 @@
       @include mq-less-768 {
         order: 2;
         width: 272px;
-
       }
     }
 
@@ -117,7 +114,6 @@
   }
 
   &:nth-child(even) {
-
     .how__num {
       width: 166px;
       text-align: right;
@@ -188,7 +184,7 @@
 
 .how__num {
   position: relative;
-  color: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, 0.06);
   font-weight: 900;
   font-size: 160px;
   font-family: 'Montserrat', sans-serif;
