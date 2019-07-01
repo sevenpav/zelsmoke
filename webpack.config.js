@@ -39,10 +39,6 @@ const config = {
     }
   },
   optimization: {
-    splitChunks: {
-      chunks: 'all',
-      name: 'common'
-    },
     minimizer: [
       new UglifyJsPlugin({
         uglifyOptions: {
@@ -152,10 +148,7 @@ const config = {
   },
   plugins: [
     ...instances,
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-      chunkFilename: 'css/common.css'
-    }),
+    new MiniCssExtractPlugin('css/[name].css'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
