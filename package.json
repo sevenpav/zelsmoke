@@ -48,6 +48,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
+    "imask": "^5.1.6",
     "normalize.css": "^8.0.1",
     "smoothscroll-polyfill": "^0.4.4"
   },

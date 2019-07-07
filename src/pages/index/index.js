@@ -4,6 +4,8 @@ import '../../components/menu/menu'
 import '../../components/header/header'
 import '../../components/how/how'
 import '../../components/faq/faq'
+import '../../components/order/order'
+import '../../components/form/form'
 
 import '../../components/footer/footer'
 

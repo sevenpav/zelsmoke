@@ -33,11 +33,10 @@
 .order__extra-choice-wrap {
   margin-bottom: 32px;
   padding-top: 32px;
-  border-top: 1px solid #33394A;
+  border-top: 1px solid #33394a;
 }
 
 .order__choice {
-
   &:not(:last-child) {
     margin-bottom: 40px;
   }
@@ -64,7 +63,7 @@
   width: 40px;
   height: 40px;
   background: none;
-  border: 2px solid #B4594D;
+  border: 2px solid #b4594d;
   border-radius: 4px;
   transform: translate(-100%, -50%);
   cursor: pointer;
@@ -74,7 +73,6 @@
   }
 
   &:hover {
-
     &:before {
       transform: rotate(90deg);
     }
@@ -84,7 +82,8 @@
     }
   }
 
-  &:before, &:after {
+  &:before,
+  &:after {
     content: '';
     position: absolute;
     top: 50%;
@@ -93,7 +92,7 @@
     height: 28px;
     margin-top: calc(-28px / 2);
     margin-left: calc(-2px / 2);
-    background-color: #B4594D;
+    background-color: #b4594d;
     border-radius: 4px;
     transition: all 200ms;
   }
@@ -119,12 +118,12 @@
   }
 
   &--active {
-
     .order__sticker {
-      background-color: #32846B;
+      background-color: #32846b;
     }
 
-    .order__item-name, .order__item-price {
+    .order__item-name,
+    .order__item-price {
       color: $primary-text-color;
     }
   }
@@ -138,7 +137,7 @@
   width: 128px;
   height: 128px;
   margin-bottom: 8px;
-  background-color: #33394A;
+  background-color: #33394a;
   border-radius: 50%;
 
   &:after {
@@ -148,9 +147,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../../../assets/img/noise.gif');
+    background-image: url(~@/public/img/noise.gif);
     border-radius: 50%;
-    opacity: .02;
+    opacity: 0.02;
   }
 }
 
@@ -158,7 +157,8 @@
   text-align: center;
 }
 
-.order__item-name, .order__item-price {
+.order__item-name,
+.order__item-price {
   color: $main-text-color;
   font-size: 20px;
 }
@@ -180,7 +180,7 @@
   letter-spacing: 1.6px;
   text-transform: uppercase;
   background: none;
-  border: 2px solid #33394A;
+  border: 2px solid #33394a;
   border-radius: 4px;
   cursor: pointer;
 
@@ -193,7 +193,8 @@
   }
 }
 
-.order__price, .order__total {
+.order__price,
+.order__total {
   display: flex;
   justify-content: center;
   margin-top: 40px;
@@ -204,12 +205,14 @@
   }
 }
 
-.order__price-label, .order__total-label {
+.order__price-label,
+.order__total-label {
   margin: 0 16px 0 0;
   color: $main-text-color;
 }
 
-.order__price-sum, .order__total-sum {
+.order__price-sum,
+.order__total-sum {
   margin: 0;
   color: $primary-text-color;
 }
@@ -222,15 +225,4 @@
   @include mq-less-1360 {
     margin: 80px auto 0;
   }
-}
-
-// React animation
-
-.bowls-enter {
-  opacity: 0.4;
-}
-
-.bowls-enter.bowls-enter-active {
-  opacity: 1;
-  transition: all 100ms linear;
 }

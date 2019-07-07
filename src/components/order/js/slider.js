@@ -1,7 +1,6 @@
 const sliderInit = lists => {
 
 	const bindUIEvents = list => {
-
 		const slider = {
 			list,
 			items: Array.from(list.children),
@@ -60,7 +59,6 @@ const sliderInit = lists => {
 				slider.index--;
 			}
 		}
-		
 		slider.translateX = slider.index * slider.itemWidth;
 		slider.list.classList.add('order__list--animate');
 		slider.list.style.transform = `translateX(-${slider.translateX}px)`;

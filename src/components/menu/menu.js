@@ -9,11 +9,9 @@ hamburger.addEventListener('click', e => {
   menu.classList.toggle('menu--collapse')
   body.classList.toggle('fixed')
 
-  if (menu.classList.contains('menu--collapse')) {
-    menu.style.height = `${window.innerHeight}px`
-  } else {
-    menu.style.height = null
-  }
+  menu.classList.contains('menu--collapse')
+    ? (menu.style.height = `${window.innerHeight}px`)
+    : (menu.style.height = null)
 })
 
 window.addEventListener('resize', () => {

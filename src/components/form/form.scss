@@ -73,10 +73,6 @@
     width: 100%;
   }
 
-  &:hover {
-    border-bottom: 1px solid #767D8C;
-  }
-
   &:focus {
     border-bottom: 1px solid #767D8C;
     outline: 0;
@@ -136,28 +132,6 @@
   }
 }
 
-.form__promocode-btn {
-  position: absolute;
-  top: 50%;
-  display: inline-block;
-  width: 100%;
-  margin-left: 16px;
-  color: $main-text-color;
-  font-size: 16px;
-  transform: translateY(-50%);
-  cursor: pointer;
-
-  &:hover {
-    color: fade_out($main-text-color, .2);
-  }
-
-  @include mq-less-768 {
-    position: static;
-    margin: 24px 0;
-    transform: none;
-  }
-}
-
 .form__agree-text {
   position: absolute;
   bottom: -16px;
@@ -171,7 +145,6 @@
   transform: translateY(100%);
 
   @include mq-less-768 {
-    bottom: 0;
     width: 100%;
   }
 }
@@ -201,14 +174,10 @@
 
 // Mixes
 
-.button.form__button {
+.form__button {
 
   &--loading {
     color: fade_out($primary-text-color, 1);
-  }
-
-  &--disabled {
-    background-color: fade_out(#32846B, .2);
   }
 }
 
